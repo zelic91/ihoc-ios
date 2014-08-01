@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#define ApplicationDelegate ((ZAppDelegate *)[UIApplication sharedApplication].delegate)
+
 @interface ZAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) ZNetworkEngine *networkEngine;
 
 @end

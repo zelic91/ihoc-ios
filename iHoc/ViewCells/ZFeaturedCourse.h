@@ -1,5 +1,5 @@
 //
-//  ZViewController.h
+//  ZFeaturedCourse.h
 //  iHoc
 //
 //  Created by Zelic on 8/1/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZViewController : UIViewController
+@interface ZFeaturedCourse : UIView
 
 @end

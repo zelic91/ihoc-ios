@@ -13,4 +13,22 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+
+#import "Constant.h"
+#import "ZBaseViewController.h"
+//Libraries
+#import "SVProgressHUD.h"
+#import "SIAlertView.h"
+#import "MKNetworkKit.h"
+#import "ZScrollView.h"
+#import "RTLabel.h"
+
+//Models
+#import "ZUser.h"
+#import "ZBookmark.h"
+#import "ZCategory.h"
+#import "ZPartner.h"
+#import "ZCourse.h"
+#import "ZNetworkEngine.h"
+
 #endif
