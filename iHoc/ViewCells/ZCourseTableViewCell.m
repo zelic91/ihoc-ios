@@ -25,6 +25,17 @@
 - (void)setCourse:(ZCourse *)course
 {
     _course = course;
+    [_courseImage setImageFromURL:[NSURL URLWithString:_course.image]];
+    _lbCourseName.text = _course.name;
+    _lbDuration.text = [NSString stringWithFormat:@"%@ %@", _course.duration, _course.durationUnit];
+    _lbStartDate.text = [ZDateTimeUtil getDisplayDateStringFromTimeStamp:_course.startDate];
+    if (_course.price != (NSNumber *)[NSNull null]) {
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        _lbPrice.text = [NSString stringWithFormat:@"%@ VNĐ", [numberFormatter stringFromNumber:_course.price]];
+    } else {
+        _lbPrice.text = @"Không xác định";
+    }
 }
 
 - (void)initStyle
@@ -49,6 +60,11 @@
     _lbStartDate.font = kFontSemiBold(14);
     _lbStartDate.textColor = kColorGrayTextDark;
     
+}
+
+- (void)prepareForReuse
+{
+
 }
 
 @end

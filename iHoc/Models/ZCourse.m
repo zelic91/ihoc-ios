@@ -16,8 +16,15 @@
     if (self) {
         _id           = [[dic objectForKey:@"id"] integerValue];
         _name         = [dic objectForKey:@"name"];
-        _partnerId    = [[dic objectForKey:@"partner_id"] integerValue];
-        _categoryId   = [[dic objectForKey:@"category_id"] integerValue];
+        _partner      = [[ZPartner alloc] initWithDic:[dic objectForKey:@"partner"]];
+        _category     = [[ZCategory alloc] initWithDic:[dic objectForKey:@"category_id"]];
+        _path         = [NSMutableArray array];
+        if ([dic objectForKey:@"dic"]) {
+            for (NSDictionary *d in [dic objectForKey:@"dic"]) {
+                ZCoursePath *p = [[ZCoursePath alloc] initWithDic:d];
+                [_path addObject:p];
+            }
+        }
         _startDate    = [[dic objectForKey:@"start_date"] integerValue];
         _endDate      = [[dic objectForKey:@"end_date"] integerValue];
         _duration     = [dic objectForKey:@"duration"];

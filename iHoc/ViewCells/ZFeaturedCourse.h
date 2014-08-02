@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ZFeaturedCourse : UIView
-
+@property (strong, nonatomic) ZCourse *course;
 @end

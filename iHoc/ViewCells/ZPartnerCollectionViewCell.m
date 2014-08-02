@@ -19,6 +19,9 @@
 - (void)setPartner:(ZPartner *)partner
 {
     _partner = partner;
+    [_partnerImage setImageFromURL:[NSURL URLWithString:partner.image]];
+    _partnerName.text = partner.name;
+    
 }
 
 - (void)initStyle

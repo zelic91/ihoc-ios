@@ -15,8 +15,10 @@
     [[UINavigationBar appearance] setBarTintColor:kColorGreen];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:kColorWhite, NSForegroundColorAttributeName, kFontBold(20), NSFontAttributeName, nil]];
     [[UINavigationBar appearance] setBackgroundColor:kColorGreen];
+    
     //Init network delegate
-    ApplicationDelegate.networkEngine = [[ZNetworkEngine alloc] initWithHostName:kHost];
+    self.networkEngine = [[ZNetworkEngine alloc] initWithHostName:kHost];
+    [UIImageView setDefaultEngine:self.networkEngine];
     
     return YES;
 }

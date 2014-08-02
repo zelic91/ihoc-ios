@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ZSponsoredView : UIView
-
+@property (strong, nonatomic) ZCourse *course;
 @end

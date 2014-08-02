@@ -7,12 +7,14 @@
 //
 
 #import "ZCoursesViewController.h"
+#import "ZCourseDetailsViewController.h"
 #import "ZCourseTableViewCell.h"
 
 #define kCellId @"CourseCellId"
 #define kSegueDetails @"FromCoursesToDetails"
 @interface ZCoursesViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *courses;
 @end
 
 @implementation ZCoursesViewController
@@ -22,8 +24,23 @@
     [super viewDidLoad];
     self.delegate = self;
     _tableView.backgroundColor = kColorGrayListBackground;
+    _tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
     
     [self setLeftNavButton:[UIImage imageNamed:@"back"]];
+    
+    [self initData];
+}
+
+- (void)initData
+{
+    [SVProgressHUD showWithStatus:@"Loading ..."];
+    [ApplicationDelegate.networkEngine getCourses:1 completion:^(NSArray *data) {
+        [SVProgressHUD dismiss];
+        _courses = data;
+        [_tableView reloadData];
+    } failure:^(NSArray *data, NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"Error"];
+    }];
 }
 
 #pragma mark - Nav Delegate
@@ -40,7 +57,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    if (_courses) {
+        return _courses.count;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -48,16 +68,23 @@
     ZCourseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellId];
     [cell initStyle];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell setCourse:_courses[indexPath.row]];
     return cell;
 }
 
 #pragma mark - TableView Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:kSegueDetails sender:self];
+    [self performSegueWithIdentifier:kSegueDetails sender:_courses[indexPath.row]];
 }
 
-
-#pragma mark - Button click handler
+#pragma mark - Prepare for segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kSegueDetails]) {
+        ZCourseDetailsViewController *vc = (ZCourseDetailsViewController *)segue.destinationViewController;
+        vc.course = sender;
+    }
+}
 
 @end

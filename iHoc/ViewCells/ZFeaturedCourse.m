@@ -39,5 +39,24 @@
     _lbPrice.textColor = kColorGreen;
 }
 
+- (void)setCourse:(ZCourse *)course
+{
+    _course = course;
+    _lbCourseName.text = course.name;
+    _lbPartnerName.text = course.partner.name;
+    
+    if (course.price != (NSNumber *)[NSNull null]) {
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setGroupingSeparator:[[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator]];
+        [numberFormatter setGroupingSize:3];
+        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSString *price = [numberFormatter stringFromNumber:course.price];
+        NSLog(@"Number: %@", price);
+        _lbPrice.text = [NSString stringWithFormat:@"%@ VNĐ", price];
+    } else {
+        _lbPrice.text = @"Không xác định";
+    }
+    [_courseImage setImageFromURL:[NSURL URLWithString:course.image]];
+}
 
 @end

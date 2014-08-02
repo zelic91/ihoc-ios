@@ -35,5 +35,11 @@
     _lbPartnerName.textColor = kColorGrayTextLight;
 }
 
+- (void)setPartner:(ZPartner *)partner
+{
+    _partner = partner;
+    _lbPartnerName.text = partner.name;
+    [_partnerImage setImageFromURL:[NSURL URLWithString:partner.image]];
+}
 
 @end

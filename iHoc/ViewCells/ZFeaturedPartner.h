@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ZFeaturedPartner : UIView
-
+@property (strong, nonatomic) ZPartner *partner;
 @end

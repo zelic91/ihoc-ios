@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ZCoursesViewController : ZBaseViewController<UITableViewDataSource, UITableViewDelegate, ZNavDelegate>
-
+@property (strong, nonatomic) ZPartner  *partner;
+@property (strong, nonatomic) ZCategory *category;
 @end

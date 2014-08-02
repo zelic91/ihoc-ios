@@ -22,7 +22,7 @@
 - (void)setLeftNavButton:(UIImage *)image
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 44, 44);
+    button.frame = CGRectMake(0, 0, 30, 44);
     [button setImage:image forState:UIControlStateNormal];
     [button addTarget:self action:@selector(leftNavButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:button];
@@ -32,7 +32,7 @@
 - (void)setRightNavButton:(UIImage *)image
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 44, 44);
+    button.frame = CGRectMake(0, 0, 30, 44);
     [button setImage:image forState:UIControlStateNormal];
     [button addTarget:self action:@selector(rightNavButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:button];

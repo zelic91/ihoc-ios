@@ -67,6 +67,10 @@
 		91FAB93C198BCC9F0012E9CC /* ZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FAB93B198BCC9F0012E9CC /* ZBaseViewController.m */; };
 		91FAB940198BDDF30012E9CC /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FAB93F198BDDF30012E9CC /* RTLabel.m */; };
 		91FAB943198C0B010012E9CC /* ZPartnerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FAB942198C0B010012E9CC /* ZPartnerCollectionViewCell.m */; };
+		91FAB946198C11920012E9CC /* ZBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FAB945198C11920012E9CC /* ZBorderedView.m */; };
+		91FAB949198C25DC0012E9CC /* ZCoursePathTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FAB948198C25DC0012E9CC /* ZCoursePathTableViewCell.m */; };
+		91FAB94C198C25FD0012E9CC /* ZCoursePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FAB94B198C25FD0012E9CC /* ZCoursePath.m */; };
+		91FAB94F198C51900012E9CC /* ZDateTimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FAB94D198C51900012E9CC /* ZDateTimeUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +188,14 @@
 		91FAB93F198BDDF30012E9CC /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
 		91FAB941198C0B010012E9CC /* ZPartnerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPartnerCollectionViewCell.h; sourceTree = "<group>"; };
 		91FAB942198C0B010012E9CC /* ZPartnerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPartnerCollectionViewCell.m; sourceTree = "<group>"; };
+		91FAB944198C11920012E9CC /* ZBorderedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBorderedView.h; sourceTree = "<group>"; };
+		91FAB945198C11920012E9CC /* ZBorderedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBorderedView.m; sourceTree = "<group>"; };
+		91FAB947198C25DC0012E9CC /* ZCoursePathTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCoursePathTableViewCell.h; sourceTree = "<group>"; };
+		91FAB948198C25DC0012E9CC /* ZCoursePathTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCoursePathTableViewCell.m; sourceTree = "<group>"; };
+		91FAB94A198C25FD0012E9CC /* ZCoursePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCoursePath.h; sourceTree = "<group>"; };
+		91FAB94B198C25FD0012E9CC /* ZCoursePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCoursePath.m; sourceTree = "<group>"; };
+		91FAB94D198C51900012E9CC /* ZDateTimeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDateTimeUtil.m; sourceTree = "<group>"; };
+		91FAB94E198C51900012E9CC /* ZDateTimeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDateTimeUtil.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +303,8 @@
 		91A2DB68198B5E4A0009FAF6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				91FAB94D198C51900012E9CC /* ZDateTimeUtil.m */,
+				91FAB94E198C51900012E9CC /* ZDateTimeUtil.h */,
 				91FAB910198B88F30012E9CC /* ZScreenshotUtil.m */,
 				91FAB911198B88F30012E9CC /* ZScreenshotUtil.h */,
 				91FAB90D198B88A60012E9CC /* ZFadeOutSegue.m */,
@@ -299,6 +313,8 @@
 				91A2DB6E198B5E800009FAF6 /* ZUserManager.m */,
 				91A2DB89198B6A3A0009FAF6 /* ZNetworkEngine.h */,
 				91A2DB8A198B6A3A0009FAF6 /* ZNetworkEngine.m */,
+				91FAB944198C11920012E9CC /* ZBorderedView.h */,
+				91FAB945198C11920012E9CC /* ZBorderedView.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -333,6 +349,8 @@
 				91FAB938198BBD6E0012E9CC /* ZCourseTableViewCell.m */,
 				91FAB941198C0B010012E9CC /* ZPartnerCollectionViewCell.h */,
 				91FAB942198C0B010012E9CC /* ZPartnerCollectionViewCell.m */,
+				91FAB947198C25DC0012E9CC /* ZCoursePathTableViewCell.h */,
+				91FAB948198C25DC0012E9CC /* ZCoursePathTableViewCell.m */,
 			);
 			path = ViewCells;
 			sourceTree = "<group>";
@@ -373,6 +391,8 @@
 				91A2DB7A198B5ECF0009FAF6 /* ZPartner.m */,
 				91A2DB7C198B5EF40009FAF6 /* ZCourse.h */,
 				91A2DB7D198B5EF40009FAF6 /* ZCourse.m */,
+				91FAB94A198C25FD0012E9CC /* ZCoursePath.h */,
+				91FAB94B198C25FD0012E9CC /* ZCoursePath.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -593,6 +613,8 @@
 				91A2DBC3198B773F0009FAF6 /* NSDate+RFC1123.m in Sources */,
 				91A2DB78198B5EC00009FAF6 /* ZCategory.m in Sources */,
 				91FAB93C198BCC9F0012E9CC /* ZBaseViewController.m in Sources */,
+				91FAB949198C25DC0012E9CC /* ZCoursePathTableViewCell.m in Sources */,
+				91FAB94C198C25FD0012E9CC /* ZCoursePath.m in Sources */,
 				91A2DB41198B5DD70009FAF6 /* ZAppDelegate.m in Sources */,
 				91A2DB75198B5EAF0009FAF6 /* ZBookmark.m in Sources */,
 				91A2DBC5198B773F0009FAF6 /* NSString+MKNetworkKitAdditions.m in Sources */,
@@ -611,6 +633,8 @@
 				91A2DB9A198B6A730009FAF6 /* ZPartnersViewController.m in Sources */,
 				91FAB927198B98AC0012E9CC /* ZSponsoredView.m in Sources */,
 				91A2DBC4198B773F0009FAF6 /* NSDictionary+RequestEncoding.m in Sources */,
+				91FAB946198C11920012E9CC /* ZBorderedView.m in Sources */,
+				91FAB94F198C51900012E9CC /* ZDateTimeUtil.m in Sources */,
 				91FAB90F198B88A60012E9CC /* ZFadeOutSegue.m in Sources */,
 				91A2DBC1198B773F0009FAF6 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				91FAB933198BAA870012E9CC /* ZFeaturedCourse.m in Sources */,

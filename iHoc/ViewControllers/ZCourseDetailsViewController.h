@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZCourseDetailsViewController : ZBaseViewController<ZNavDelegate>
+@interface ZCourseDetailsViewController : ZBaseViewController<ZNavDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) ZCourse *course;
 @end

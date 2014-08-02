@@ -7,6 +7,10 @@
 //
 
 #import "ZDashboardViewController.h"
+#import "ZCourseDetailsViewController.h"
+#import "ZCoursesViewController.h"
+#import "ZBookmarksViewController.h"
+#import "ZPartnersViewController.h"
 #import "ZCategoryTableViewCell.h"
 #import "ZSponsoredView.h"
 #import "ZFeaturedCourse.h"
@@ -16,6 +20,7 @@
 #define kSegueCourses   @"FromDashboardToCourses"
 #define kSeguePartners  @"FromDashboardToPartners"
 #define kSegueBookmarks @"FromDashboardToBookmarks"
+#define kSegueDetails   @"FromDashboardToDetails"
 
 @interface ZDashboardViewController ()
 @property (weak, nonatomic) IBOutlet ZScrollView *svSponsored;
@@ -39,12 +44,15 @@
     
     _svSponsored.scrollDataSource = self;
     _svSponsored.pagingEnabled = YES;
+    _svSponsored.scrollDelegate = self;
     _svSponsored.bounces = NO;
     
     _svFeaturedCourses.scrollDataSource = self;
+    _svFeaturedCourses.scrollDelegate = self;
     _svFeaturedCourses.space = 20;
     
     _svFeaturedPartners.scrollDataSource = self;
+    _svFeaturedPartners.scrollDelegate = self;
     _svFeaturedPartners.space = 20;
 }
 
@@ -77,22 +85,28 @@
 - (NSInteger)numberOfItemsInScrollView:(ZScrollView *)scrollView
 {
     if (scrollView == _svSponsored) {
+        return _sponsoredCourses.count;
     } else if (scrollView == _svFeaturedCourses) {
+        return _featuredCourses.count;
     } else if (scrollView == _svFeaturedPartners) {
+        return _featuredPartners.count;
     }
-    return 5;
+    return 0;
 }
 
 - (UIView *)scrollView:(ZScrollView *)scrollView viewForItemAtIndex:(NSInteger)index
 {
     if (scrollView == _svSponsored) {
         ZSponsoredView *view = [[ZSponsoredView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+        [view setCourse:_sponsoredCourses[index]];
         return view;
     } else if (scrollView == _svFeaturedCourses) {
         ZFeaturedCourse *view = [[ZFeaturedCourse alloc] initWithFrame:CGRectMake(0, 0, 100, 120)];
+        [view setCourse:_featuredCourses[index]];
         return view;
     } else if (scrollView == _svFeaturedPartners) {
         ZFeaturedPartner *view = [[ZFeaturedPartner alloc] initWithFrame:CGRectMake(0, 0, 100, 120)];
+        [view setPartner:_featuredPartners[index]];
         return view;
     }
     return nil;
@@ -101,8 +115,12 @@
 #pragma mark - ZScrollView Delegate
 - (void)scrollView:(ZScrollView *)scrollView didSelectItemAtIndex:(NSInteger)index
 {
-    if ((scrollView == _svSponsored) || (scrollView == _svFeaturedCourses)) {
+    if (scrollView == _svSponsored) {
+        [self performSegueWithIdentifier:kSegueDetails sender:_sponsoredCourses[index]];
+    } else if (scrollView == _svFeaturedCourses) {
+        [self performSegueWithIdentifier:kSegueDetails sender:_featuredCourses[index]];
     } else if (scrollView == _svFeaturedPartners) {
+        [self performSegueWithIdentifier:kSegueCourses sender:_featuredPartners[index]];
     }
 }
 
@@ -114,7 +132,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    if (_categories) {
+        return _categories.count;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -122,6 +143,7 @@
     ZCategoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellId];
     [cell initStyle];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.category = _categories[indexPath.row];
     return cell;
 }
 
@@ -141,6 +163,15 @@
 - (IBAction)allPartnersButtonDidTouch:(id)sender
 {
     [self performSegueWithIdentifier:kSeguePartners sender:self];
+}
+
+#pragma mark - Prepare for segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kSegueDetails]) {
+        ZCourseDetailsViewController *vc = (ZCourseDetailsViewController *)segue.destinationViewController;
+        vc.course = sender;
+    }
 }
 
 

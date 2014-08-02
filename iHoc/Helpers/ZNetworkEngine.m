@@ -51,6 +51,25 @@
     return op;
 }
 
+- (MKNetworkOperation *)getDashboardData:(CompletionObjectBlock)completionBlock
+                                 failure:(FailureBlock)failureBlock
+{
+    NSString *path = @"/dashboard?f=json";
+    MKNetworkOperation *op = [self operationWithPath:path];
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        if (completionBlock) {
+            completionBlock(completedOperation.responseJSON);
+        }
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        if (failureBlock) {
+            failureBlock(completedOperation.responseJSON, error);
+        }
+    }];
+    [self enqueueOperation:op];
+    return op;
+
+}
+
 - (MKNetworkOperation *)getSponsoredCourses:(CompletionArrayBlock)completionBlock
                                     failure:(FailureBlock)failureBlock
 {
@@ -147,8 +166,8 @@
                         completion:(CompletionArrayBlock)completionBlock
                            failure:(FailureBlock)failureBlock
 {
-    NSString *path = @"/courses/featured?f=json";
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:page], @"p", nil];
+    NSString *path = @"/courses?f=json";
+    NSDictionary *params = nil;
     MKNetworkOperation *op = [self operationWithPath:path params:params];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         if (completionBlock) {

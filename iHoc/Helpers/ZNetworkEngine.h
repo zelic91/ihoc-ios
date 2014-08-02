@@ -22,6 +22,9 @@ typedef void (^FailureBlock)(NSArray *data, NSError *error);
                             completion:(CompletionObjectBlock)completionBlock
                                failure:(FailureBlock)failureBlock;
 
+- (MKNetworkOperation *)getDashboardData:(CompletionObjectBlock)completionBlock
+                                    failure:(FailureBlock)failureBlock;
+
 - (MKNetworkOperation *)getSponsoredCourses:(CompletionArrayBlock)completionBlock
                                     failure:(FailureBlock)failureBlock;
 

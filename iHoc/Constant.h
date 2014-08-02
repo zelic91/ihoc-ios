@@ -10,7 +10,7 @@
 #define iHoc_Constant_h
 
 
-#define kHost @"colt.herokuapp.com/api"
+#define kHost @"colt.herokuapp.com"
 
 #define kColorGreen                 [UIColor colorWithRed:0.15 green:0.68 blue:0.38 alpha:1]
 #define kColorGrayListBackground    [UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1]

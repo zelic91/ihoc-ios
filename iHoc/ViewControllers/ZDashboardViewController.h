@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ZDashboardViewController : ZBaseViewController<UITableViewDataSource, UITableViewDelegate, ZScrollViewDataSource, ZScrollViewDelegate, ZNavDelegate>
+@property (strong, nonatomic) NSArray *sponsoredCourses;
+@property (strong, nonatomic) NSArray *featuredCourses;
+@property (strong, nonatomic) NSArray *featuredPartners;
+@property (strong, nonatomic) NSArray *categories;
 
 @end

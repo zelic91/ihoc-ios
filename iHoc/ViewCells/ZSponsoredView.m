@@ -35,4 +35,11 @@
     _lbCourseName.font = kFontBold(22);
 }
 
+- (void)setCourse:(ZCourse *)course
+{
+    _course = course;
+    _lbCourseName.text = course.name;
+    [_courseImage setImageFromURL:[NSURL URLWithString:course.image]];
+}
+
 @end
